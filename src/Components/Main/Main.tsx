@@ -10,12 +10,6 @@ export interface TaskInterface {
   description: string;
 }
 
-// export interface CardProps {
-//   tasks: TaskInterface[];
-//   updatedTasks: TaskInterface[];
-//   setUpdatedTasks: React.Dispatch<React.SetStateAction<TaskInterface[]>>;
-// }
-
 export interface CardProps {
   updatedTasks: TaskInterface[];
   setUpdatedTasks: React.Dispatch<React.SetStateAction<TaskInterface[]>>;
@@ -31,7 +25,6 @@ interface NewTaskInterface {
 export const Main = ({ updatedTasks, setUpdatedTasks }: CardProps) => {
   const [inputVisible, setInputVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  // const [updatedTasks, setUpdatedTasks] = useState<TaskInterface[]>(tasks);
 
   const [showSelect, setShowSelect] = useState({
     readySelect: false,
@@ -80,7 +73,6 @@ export const Main = ({ updatedTasks, setUpdatedTasks }: CardProps) => {
       localStorage.setItem("tasks", JSON.stringify(newTasks));
       return newTasks;
     });
-    // console.log(updatedTasks);
   };
 
   useEffect(() => {}, [updatedTasks]);
