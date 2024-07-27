@@ -1,6 +1,6 @@
 export interface TaskData {
   title: string;
-  id: number;
+  id: string | number;
   name: string;
   description: string;
 }
@@ -23,7 +23,7 @@ export const dataMock: {
     id: 2,
     name: "Sprint bugfix",
     description:
-      "Описание 2. Это был темный лес, издали казавшийся непроходимым. Там Пахапиль охотился, глушил рыбу, спал на еловых ветках. Короче – жил, пока русские не выгнали оккупантов.",
+      "",
   },
   {
     title: "Ready",
