@@ -15,32 +15,45 @@ export const TaskDetails = ({ tasks }: TaskDetails) => {
   const task = tasks.find((t) => t.id === taskId);
 
   const [description, setDescription] = useState(task?.description || "");
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleSaveClick = () => {
     console.log("Description saved:", description);
+    setIsEditing(false);
+  };
+
+  const handleEditClick = () => {
+    setIsEditing(true);
   };
 
   return (
     <div className="wrapper">
       <div className="wrapper-content">
         <h2>{task?.name}</h2>
-        {description ? (
-          <p className="task-description">{description}</p>
-        ) : (
-          <div className="description-area">
-            {!description && <p>This task has no description.</p>}
-            <textarea
-              className="task-textarea"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <button className="save-task-description" onClick={handleSaveClick}>Save</button>
-          </div>
-        )}
+        <div className="description-area">
+          {description ? (
+            <p className="task-description">{description}</p>
+          ) : (
+            <p>This task has no description.</p>
+          )}
+           {isEditing ? (
+            <>
+              <textarea
+                className="task-textarea"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              <button className="save-task-description" onClick={handleSaveClick}>Save</button>
+            </>
+          ) : (
+            <button className="edit-task-description" onClick={handleEditClick}>Edit</button>
+          )}
+        </div>
         <button className="close-button" onClick={() => navigate("/")}>
           <img src="./images/close-icon.svg" alt="icon" />
         </button>
       </div>
     </div>
   );
+
 };

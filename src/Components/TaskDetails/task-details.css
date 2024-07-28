@@ -36,7 +36,8 @@
   height: auto;
 }
 
-.save-task-description {
+.save-task-description,
+.edit-task-description {
   width: 120px;
   color: #fff;
   background-color: #0079bf;
