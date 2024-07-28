@@ -1,5 +1,5 @@
 import "./task-details.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { TaskData } from "../../dataMock";
 
@@ -19,12 +19,20 @@ export const TaskDetails = ({ tasks }: TaskDetails) => {
 
   const handleSaveClick = () => {
     console.log("Description saved:", description);
+    localStorage.setItem(`task-${taskId}-description`, description);
     setIsEditing(false);
   };
 
   const handleEditClick = () => {
     setIsEditing(true);
   };
+
+  useEffect(() => {
+    const savedDescription = localStorage.getItem(`task-${taskId}-description`);
+    if (savedDescription) {
+      setDescription(savedDescription);
+    }
+  }, [taskId]);
 
   return (
     <div className="wrapper">
