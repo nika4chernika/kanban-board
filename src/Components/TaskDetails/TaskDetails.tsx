@@ -58,7 +58,7 @@ export const TaskDetails = ({ tasks }: TaskDetails) => {
           )}
         </div>
         <button className="close-button" onClick={() => navigate("/")}>
-          <img src="./images/close-icon.svg" alt="icon" />
+          <img src="../images/close-icon.svg" alt="icon" />
         </button>
       </div>
     </div>
